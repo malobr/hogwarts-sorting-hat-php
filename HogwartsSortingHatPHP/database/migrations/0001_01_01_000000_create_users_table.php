@@ -17,6 +17,11 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->date('birth_date');
+            $table->enum('gender', ['male', 'female', 'other']);           
+            $table->enum('blood_status', ['pure-blood', 'half-blood', 'muggle-born']);
+            $table->foreignId('house_id')->nullable()->constrained();
+            $table->json('avatar_config');
             $table->rememberToken();
             $table->timestamps();
         });
